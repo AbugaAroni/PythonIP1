@@ -5,7 +5,7 @@ class User:
 
     user_list= []
 
-    def __init__(self, fname, lname):
+    def __init__(self, uname, password):
 
-            self.fname =fname
-            self.lame = lname
+            self.uname =uname
+            self.password = password

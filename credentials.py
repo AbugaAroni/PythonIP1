@@ -5,8 +5,9 @@ class Credentials:
 
     user_list= []
 
-    def __init__(self, uname,email, password):
+    def __init__(self, appname,appusername, appemail, apppassword):
 
-            self.fname =fname
-            self.email = email
-            self.password = password
+            self.appname = appname
+            self.appusername =appusername
+            self.appemail = appemail
+            self.apppassword = apppassword
