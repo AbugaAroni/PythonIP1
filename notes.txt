@@ -8,3 +8,19 @@ credentials
 username
 email
 password
+
+
+login
+
+are you an existing user?
+  yes - login
+  no - new login - provide login credentials
+
+    then enters to credential stuff, what do?
+
+      create new account for social media
+        generate password?
+          yes -
+          no - input
+      view Credentials
+      delete credentials
