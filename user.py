@@ -5,7 +5,7 @@ class User:
 
     user_list= []
 
-    def __init__(self, fname,lname):
+    def __init__(self, fname, lname):
 
             self.fname =fname
             self.lame = lname
