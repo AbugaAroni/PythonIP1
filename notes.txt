@@ -1,0 +1,10 @@
+users class
+
+first_names
+surnames
+
+
+credentials
+username
+email
+password
