@@ -47,11 +47,18 @@ def display_credential():
     Function that returns all the saved contacts
     '''
     return Credential.display_creds()
+
 def passwordGenerate():
     '''
     Function that returns all the saved contacts
     '''
     return Credential.generatePassword(8)
+
+def check_existing_cred(appname):
+    '''
+    Function that check if a user exists with that password and returns a Boolean
+    '''
+    return Credential.cred_exist(appname)
 
 def main():
 
@@ -122,7 +129,7 @@ def main():
                                         print ('\n')
                                         print(f"Your generated password {newPassword}")
 
-                                    save_cred(create_cred(app_name,u_name,newPassword)) # create and save new contact.
+                                    save_cred(create_cred(app_name,u_name,newPassword)) # create and save new credentials.
                                     print ('\n')
                                     print(f"New Credentials for {app_name} have been created")
                                     print ('\n')
@@ -146,9 +153,10 @@ def main():
 
                                     print("Enter the name for the app information you want to delete")
                                     search_text = input()
-                                    if check_existing_contacts(search_number):
+                                    if check_existing_cred(search_text):
                                         print ('\n')
-                                        del_contact(search_contact)
+                                        search_cred = find_contact(search_text)                                        
+                                        del_cred(search_cred)
                                         print(f"Contact Deleted")
                                         print ('\n')
                                     else:
