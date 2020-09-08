@@ -41,3 +41,10 @@ class Credential:
         for credential in cls.credential_list:
             if credential.appname == appname:
                 return credential
+
+    @classmethod
+    def display_creds(cls):
+        '''
+        method that returns the contact list
+        '''
+        return cls.credential_list                
