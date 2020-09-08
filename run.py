@@ -129,26 +129,25 @@ def main():
 
                             elif short_code == 'dc':
 
-                                    if display_contacts():
-                                            print("Here is a list of all your contacts")
+                                    if display_cred():
+                                            print("Here is a list of all your Credentials")
                                             print('\n')
 
-                                            for contact in display_contacts():
-                                                    print(f"{contact.first_name} {contact.last_name} .....{contact.phone_number}")
+                                            for credential in display_cred():
+                                                    print(f"{credential.appname} {credential.appusername} .....{credential.apppassword}")
 
                                             print('\n')
                                     else:
                                             print('\n')
-                                            print("You dont seem to have any contacts saved yet")
+                                            print("You dont seem to have any credentials saved yet")
                                             print('\n')
 
                             elif short_code == 'de':
 
-                                    print("Enter the number for the contact you want to delete")
-                                    search_number = input()
+                                    print("Enter the name for the app information you want to delete")
+                                    search_text = input()
                                     if check_existing_contacts(search_number):
                                         print ('\n')
-                                        search_contact = find_contact(search_number)
                                         del_contact(search_contact)
                                         print(f"Contact Deleted")
                                         print ('\n')

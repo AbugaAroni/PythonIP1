@@ -58,3 +58,16 @@ class Credential:
         method that returns the contact list
         '''
         return cls.credential_list
+
+    @classmethod
+    def cred_exist(cls,appname):
+        '''
+        Method that checks if a credentials exists from the cred list.
+        Args:
+            appname: credential to search if it exists
+        Returns :
+            Boolean: True or false depending if the contact exists
+        '''
+        for credential in cls.credential_list:
+            if credential.appname == appname:
+                    return True

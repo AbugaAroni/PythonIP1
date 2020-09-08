@@ -85,5 +85,17 @@ class TestCredential(unittest.TestCase):
 
         self.assertEqual(test_cred.apppassword,new_password)
 
+    def test_cred_exists(self):
+        '''
+        test to check if we can return a Boolean  if we cannot find the credential information.
+        '''
+
+        self.new_cred.save_cred()
+        test_cred = Credential("Google","amceweyt","12cewgaeusircord") # new user
+        test_cred.save_cred()
+
+        cred_exists = Credential.cred_exist("Google")
+        self.assertTrue(cred_exists)
+
 if __name__ == '__main__':
     unittest.main()
