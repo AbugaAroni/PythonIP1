@@ -10,10 +10,10 @@ class TestCredential(unittest.TestCase):
         self.new_cred = Credential("Facebook","AbugaAroni","password")
 
     def tearDown(self):
-            '''
-            tearDown method that does clean up after each test case has run.
-            '''
-            Credential.credential_list = []
+        '''
+        tearDown method that does clean up after each test case has run.
+        '''
+        Credential.credential_list = []
 
     def test_init(self):
         '''
@@ -32,37 +32,37 @@ class TestCredential(unittest.TestCase):
         self.assertEqual(len(Credential.credential_list),1)
 
     def test_save_multiple_cred(self):
-            '''
-            check if we can save multiple objects to our cred_list
-            '''
-            self.new_cred.save_cred()
-            test_cred = Credential("Twitter","John75","20password20")
-            test_cred.save_cred()
-            self.assertEqual(len(Credential.credential_list),2)
+        '''
+        check if we can save multiple objects to our cred_list
+        '''
+        self.new_cred.save_cred()
+        test_cred = Credential("Twitter","John75","20password20")
+        test_cred.save_cred()
+        self.assertEqual(len(Credential.credential_list),2)
 
     def test_delete_cred(self):
-            '''
-            test if we can remove a credential from our credential list
-            '''
-            self.new_cred.save_cred()
-            test_cred = Credential("Slack","username","1224password") # new credential
-            test_cred.save_cred()
-
-            self.new_cred.delete_cred()# Deleting a cred object
-            self.assertEqual(len(Credential.credential_list),1)
-
-    def test_user_exists(self):
         '''
-        test to check if we can return a Boolean  if we cannot find the credentials.
+        test if we can remove a credential from our credential list
+        '''
+        self.new_cred.save_cred()
+        test_cred = Credential("Slack","username","1224password") # new credential
+        test_cred.save_cred()
+
+        self.new_cred.delete_cred()# Deleting a cred object
+        self.assertEqual(len(Credential.credential_list),1)
+
+    def test_find_cred_by_appname(self):
+        '''
+        test to check if we can find a credential by the appname and get display information
         '''
 
         self.new_cred.save_cred()
-        test_cred = Credential("Facebook","AbugaAroni","password") # new user
+        test_cred= Credential("Youtube","usernameyt","1224paseresword") # new credential
         test_cred.save_cred()
 
-        cred_exists = Credential.cred_exist("Facebook", "AbugaAroni","password")
-        self.assertTrue(cred_exists)
+        found_cred = Credential.find_by_appname("Youtube")
 
+        self.assertEqual(found_cred.appname,test_cred.appname)
 
 if __name__ == '__main__':
     unittest.main()
