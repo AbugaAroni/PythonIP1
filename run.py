@@ -1,6 +1,6 @@
 #!/usr/bin/env python3.6
 from user import User
-from credentials import Credentials
+from credentials import Credential
 
 def create_user(uname,password):
     '''
@@ -60,6 +60,12 @@ def check_existing_cred(appname):
     '''
     return Credential.cred_exist(appname)
 
+def find_app(appname):
+    '''
+    Function that finds a credential by the name the credential
+    '''
+    return Credential.find_by_appname(appname)
+
 def main():
 
     while True:
@@ -110,7 +116,7 @@ def main():
                                     print("Input the username you wish to use ...")
                                     u_name = input()
 
-                                    print("Would you like to create your own password or have one generated for you? y/n")
+                                    print("Would you like to create your own password or have one generated for you? To create use n, to generate use y")
                                     password_generate= input()
 
                                     newPassword = ''
@@ -121,27 +127,34 @@ def main():
                                         newPassword = input()
                                         print ('\n')
 
-
-                                    else password_generate =='y':
-
+                                    elif password_generate =='y':
                                         print ('\n')
                                         newPassword = passwordGenerate();
                                         print ('\n')
                                         print(f"Your generated password {newPassword}")
 
-                                    save_cred(create_cred(app_name,u_name,newPassword)) # create and save new credentials.
+                                    else:
+                                        print("Wrong input, the system will generate a password for you")
+                                        newPassword = passwordGenerate();
+                                        print ('\n')
+                                        print(f"Your generated password {newPassword}")
+
+
+                                    save_cred(create_credential(app_name,u_name,newPassword)) # create and save new credentials.
                                     print ('\n')
                                     print(f"New Credentials for {app_name} have been created")
                                     print ('\n')
 
                             elif short_code == 'dc':
 
-                                    if display_cred():
+                                    if display_credential():
                                             print("Here is a list of all your Credentials")
                                             print('\n')
 
-                                            for credential in display_cred():
-                                                    print(f"{credential.appname} {credential.appusername} .....{credential.apppassword}")
+                                            for credential in display_credential():
+                                                    print(f"Application: {credential.appname}")
+                                                    print(f"Username: {credential.appusername}")
+                                                    print(f"Password: {credential.apppassword}")
 
                                             print('\n')
                                     else:
@@ -155,13 +168,13 @@ def main():
                                     search_text = input()
                                     if check_existing_cred(search_text):
                                         print ('\n')
-                                        search_cred = find_contact(search_text)                                        
+                                        search_cred = find_app(search_text)
                                         del_cred(search_cred)
-                                        print(f"Contact Deleted")
+                                        print(f"Credential Deleted")
                                         print ('\n')
                                     else:
-                                        print("That contact you want to delete does not exist")
-                            elif account_status == "ex":
+                                        print("That credential you want to delete does not exist")
+                            elif short_code == "ex":
                                     print("Bye .......")
                                     break
             else:
@@ -173,6 +186,7 @@ def main():
                 break
         else:
                 print("I really didn't get that. Please use the correct codes. Watch for capitalization")
+                print ('\n')
 
 if __name__ == '__main__':
 
