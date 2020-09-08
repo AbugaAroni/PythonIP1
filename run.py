@@ -38,19 +38,19 @@ def save_cred(credential):
 
 def del_cred(credential):
     '''
-    Function to delete a contact
+    Function to delete a credential
     '''
     credential.delete_cred()
 
 def display_credential():
     '''
-    Function that returns all the saved contacts
+    Function that returns all the saved credentials
     '''
     return Credential.display_creds()
 
 def passwordGenerate():
     '''
-    Function that returns all the saved contacts
+    Function that returns a generated password
     '''
     return Credential.generatePassword(8)
 
@@ -102,7 +102,7 @@ def main():
                     print ('\n')
 
                     while True:
-                            print("Use these short codes to navigate the app : cc - create a new credential, dc - display credentials,  de -delete a contact, ex -exit the application")
+                            print("Use these short codes to navigate the app : cc - create a new credential, dc - display credentials,  de -delete a credential, ex -exit the application")
 
                             short_code = input().lower()
 
