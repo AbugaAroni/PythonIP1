@@ -41,7 +41,7 @@ def main():
 
             save_user(create_user(u_name,p_word))
             print ('\n')
-            print(f"{u_name}, you have been added to the system")
+            print(f"{u_name}, you have been added to the system. You may now login")
             print ('\n')
 
         elif account_status =='y':
@@ -55,14 +55,16 @@ def main():
 
             if check_existing_user(u_name,p_word):
                     print("Details correct, you are now being logged in ...")
+                    print ('\n')
             else:
-                    print("User does not exist. Your password or Username might be wrong, try again ....")
+                    print("User does not exist, or your password or Username might be wrong, try again ....")
+                    print ('\n')
 
         elif account_status == "ex":
                 print("Bye .......")
                 break
         else:
-                print("I really didn't get that. Please use the short codes")
+                print("I really didn't get that. Please use the correct codes. Watch for capitalization")
 
 if __name__ == '__main__':
 
