@@ -23,12 +23,14 @@ def check_existing_user(ulname,pword):
     return User.user_exist(ulname,pword)
 
 def main():
-        print("Hello Welcome to the password locker. Do you have an existing account? Y/N?")
-    account_status= input()
 
     while True:
 
-        if account_status = 'N':
+        print("Hello Welcome to the password locker. Do you have an existing account? Y/N? use ex to quit")
+
+        account_status= input()
+
+        if account_status == 'n':
             print("Please create an account to access to the password locker")
 
             print ("Username ....")
@@ -42,7 +44,7 @@ def main():
             print(f"{u_name}, you have been added to the system")
             print ('\n')
 
-        elif account_status='Y':
+        elif account_status =='y':
             print("Please enter your login details")
 
             print ("Username ....")
@@ -54,9 +56,9 @@ def main():
             if check_existing_user(u_name,p_word):
                     print("Details correct, you are now being logged in ...")
             else:
-                    print("User does not exist. Your password or Username might be wrong, try again")
+                    print("User does not exist. Your password or Username might be wrong, try again ....")
 
-        elif short_code == "ex":
+        elif account_status == "ex":
                 print("Bye .......")
                 break
         else:
