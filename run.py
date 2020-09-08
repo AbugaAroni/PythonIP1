@@ -2,7 +2,6 @@
 from user import User
 from credentials import Credentials
 
-
 def create_user(uname,password):
     '''
     Function to create a new user
@@ -21,6 +20,33 @@ def check_existing_user(ulname,pword):
     Function that check if a user exists with that password and returns a Boolean
     '''
     return User.user_exist(ulname,pword)
+
+#credential
+
+def create_credential(appname,appusername, apppassword):
+    '''
+    Function to create a new credential
+    '''
+    new_cred= Credential(appname,appusername, apppassword)
+    return new_cred
+
+def save_cred(credential):
+    '''
+    Function to save the new user
+    '''
+    credential.save_cred()
+
+def del_cred(credential):
+    '''
+    Function to delete a contact
+    '''
+    credential.delete_cred()
+
+def display_credential():
+    '''
+    Function that returns all the saved contacts
+    '''
+    return Credential.display_creds()    
 
 def main():
 
