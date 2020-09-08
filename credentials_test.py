@@ -64,13 +64,26 @@ class TestCredential(unittest.TestCase):
 
         self.assertEqual(found_cred.appname,test_cred.appname)
 
-
     def test_display_all_cred(self):
         '''
         method that returns a list of all credentials saved
         '''
 
         self.assertEqual(Credential.display_creds(),Credential.credential_list)
+
+    def test_passwordgenerator(self):
+        '''
+        method that test the password generator
+        '''
+
+        self.new_cred.save_cred()
+        test_cred= Credential("Newgrounds","usyt","") # new credential
+        test_cred.save_cred()
+
+        new_password = Credential.generatePassword(8)
+        test_cred.apppassword = new_password
+
+        self.assertEqual(test_cred.apppassword,new_password)
 
 if __name__ == '__main__':
     unittest.main()

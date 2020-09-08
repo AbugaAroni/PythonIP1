@@ -1,3 +1,5 @@
+import string, random
+
 class Credential:
     """
     Class to generate the instance of a User credentials
@@ -27,6 +29,14 @@ class Credential:
 
         Credential.credential_list.remove(self)
 
+    def generatePassword(num):
+        password=''
+
+        for n in range(num):
+            x = random.randint(90,94)
+            password += string.printable[x]
+        return password
+
     @classmethod
     def find_by_appname(cls,appname):
         '''
@@ -47,4 +57,4 @@ class Credential:
         '''
         method that returns the contact list
         '''
-        return cls.credential_list                
+        return cls.credential_list
